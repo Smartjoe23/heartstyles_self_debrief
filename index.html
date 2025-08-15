@@ -3,59 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Heartstyles Self‑Debrief v2 (Foolproof)</title>
+<title>Heartstyles Self‑Debrief v3 — Sandoz style</title>
 <style>
-  :root{
-    --bg:#f7f7f8; --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --brand:#2563eb;
-    --atl:#e8f7e8; --btl:#ffeaea; --card:#ffffff; --chip:#f3f4f6;
-  }
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.4}
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
+  :root{--dark:#001C4A;--sandoz:#1C59B5;--med:#5DA6FF;--light:#A8D5FF;--ink:#0B1020;--muted:#5b6b8a;--line:#e5e7eb;--bg:#F7FAFF;--card:#ffffff}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,system-ui,sans-serif;line-height:1.45}
+  header{position:sticky;top:0;background:linear-gradient(90deg,var(--dark),var(--sandoz));color:#fff}
   .wrap{max-width:980px;margin:0 auto;padding:14px}
-  h1{font-size:20px;margin:0 0 4px 0}
-  h2{font-size:16px;margin:10px 0 8px}
-  h3{font-size:14px;margin:10px 0 6px}
-  p, label, small{font-size:14px}
-  .kicker{color:var(--muted);font-size:12px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+  h1{font-size:22px;margin:0 0 4px 0;font-weight:700;letter-spacing:.2px}
+  h2{font-size:18px;margin:10px 0 8px;color:var(--dark)}
+  h3{font-size:15px;margin:10px 0 6px;color:var(--sandoz)}
+  p,label,small{font-size:14px}
+  .kicker{opacity:.9;font-size:12px}
+  .card{background:var(--card);border:1px solid #e6eefc;border-radius:14px;padding:14px;margin:12px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
   .row{display:flex;gap:12px;flex-wrap:wrap}
   .col{flex:1 1 260px}
-  input[type="text"],input[type="email"],select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;box-sizing:border-box}
+  input[type="text"],input[type="email"],select,textarea{width:100%;padding:10px;border:1px solid #d7e3fb;border-radius:10px;background:#fff;box-sizing:border-box}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sandoz);box-shadow:0 0 0 3px rgba(28,89,181,.12)}
   textarea{min-height:80px;resize:vertical}
-  .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:12px;margin-right:8px}
+  .chip{display:inline-block;background:#ecf3ff;color:var(--dark);border:1px solid #d7e3fb;padding:4px 10px;border-radius:999px;font-size:12px;margin-right:8px}
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-  .tab{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;font-size:13px;cursor:pointer}
-  .tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
-  .sectionTitle{display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;font-size:14px}
-  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .tab{border:1px solid #d7e3fb;border-radius:999px;background:#fff;padding:8px 12px;font-size:13px;cursor:pointer;color:var(--sandoz);font-weight:600}
+  .tab.active{background:var(--sandoz);color:#fff;border-color:var(--sandoz)}
+  .btn{border:1px solid #d7e3fb;background:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;font-size:14px;color:var(--dark);font-weight:600}
+  .btn.primary{background:var(--sandoz);color:#fff;border-color:var(--sandoz)}
   .btn.small{font-size:12px;padding:6px 10px}
   .hint{color:var(--muted);font-size:12px}
   .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   @media (max-width:720px){.grid{grid-template-columns:1fr}}
-  .sliderRow{display:flex;align-items:center;gap:8px}
-  .sliderRow input[type="range"]{flex:1}
-  .badge{font-size:12px;background:#eef2ff;color:#3730a3;border:1px solid var(--line);border-radius:8px;padding:2px 8px}
-  .atl{background:var(--atl)}
-  .btl{background:var(--btl)}
+  .sliderRow{display:flex;align-items:center;gap:10px}
+  .sliderRow input[type="range"]{flex:1;accent-color:var(--sandoz)}
+  .tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid #d7e3fb}
   table{width:100%;border-collapse:collapse}
-  th,td{border:1px solid var(--line);padding:6px;vertical-align:top;font-size:13px}
-  th{background:#f3f4f6;text-align:left}
-  .toast{position:fixed;bottom:12px;right:12px;background:#111827;color:#fff;padding:10px 14px;border-radius:10px;opacity:0;transform:translateY(10px);transition:.2s}
+  th,td{border:1px solid #e6eefc;padding:8px;vertical-align:top;font-size:13px}
+  th{background:#ecf3ff;text-align:left;color:var(--dark)}
+  .out{white-space:pre-wrap;background:#ffffff;border:1px solid #e6eefc;border-radius:12px;padding:12px}
+  .sectionTitle{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .toast{position:fixed;bottom:12px;right:12px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:10px;opacity:0;transform:translateY(10px);transition:.2s}
   .toast.show{opacity:1;transform:none}
-  .out{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px}
-  .danger{color:#b91c1c}
+  .brandbar{height:6px;background:linear-gradient(90deg,var(--dark),var(--sandoz),var(--med),var(--light));border-radius:6px;margin-top:6px}
 </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>Heartstyles Self‑Debrief v2 <span class="kicker">Foolproof · Offline · EN</span></h1>
-      <div class="row">
-        <div class="pill">Quick mode (Quadrants)</div>
-        <div class="pill">Detailed mode (16 Styles)</div>
-        <div class="pill">Auto‑interpretation & questions</div>
-        <div class="pill">Export JSON / Print PDF</div>
+      <h1>Heartstyles Self‑Debrief v3 <span class="kicker">Universal · Sandoz style</span></h1>
+      <div class="brandbar"></div>
+      <div class="row" style="margin-top:8px">
+        <div class="chip">Quick (Quadrants)</div>
+        <div class="chip">Detailed (16 Styles)</div>
+        <div class="chip">Human‑readable insights</div>
+        <div class="chip">Export JSON · Print PDF</div>
       </div>
     </div>
   </header>
@@ -66,8 +63,16 @@
       <div class="row">
         <div class="col"><label>Full name</label><input id="name" type="text" placeholder="e.g., Ana Novak"></div>
         <div class="col"><label>Email (optional)</label><input id="email" type="email" placeholder="e.g., ana@company.com"></div>
-        <div class="col"><label>Role</label><input id="role" type="text" value="Key Account Manager · OTC & Trade"></div>
-        <div class="col"><label>Market</label><input id="market" type="text" value="Slovenia"></div>
+        <div class="col"><label>Role (optional)</label>
+          <select id="role">
+            <option value="">— Any role —</option>
+            <option>Individual Contributor</option>
+            <option>Manager / FLM</option>
+            <option>Sales / KAM</option>
+            <option>Operations / Support</option>
+          </select>
+        </div>
+        <div class="col"><label>Market / Team (optional)</label><input id="market" type="text" placeholder="e.g., Slovenia"></div>
       </div>
       <small class="hint">Data stays in your browser unless you export or print.</small>
     </div>
@@ -81,49 +86,39 @@
         </div>
       </div>
 
-      <!-- Quick Mode -->
       <div id="quick" class="mode">
         <h3>Quadrants · Enter Benchmark & Self (0–100)</h3>
         <div class="grid">
-          <div class="atl" style="padding:10px;border-radius:10px">
-            <strong>ATL Personal (Humility)</strong>
+          <div style="padding:12px;border-radius:12px;border:1px solid #d7e3fb;background:#f0f6ff">
+            <span class="tag">ATL · Humility</span>
             <div class="sliderRow"><label class="hint">Benchmark</label><input type="range" min="0" max="100" step="1" id="q_hum_bm" oninput="showVal('q_hum_bm_val',this.value)"><span id="q_hum_bm_val">50</span></div>
             <div class="sliderRow"><label class="hint">Self</label><input type="range" min="0" max="100" step="1" id="q_hum_sf" oninput="showVal('q_hum_sf_val',this.value)"><span id="q_hum_sf_val">50</span></div>
-            <button class="btn small" onclick="resetPair('q_hum_bm','q_hum_sf')">I don’t know</button>
           </div>
-          <div class="atl" style="padding:10px;border-radius:10px">
-            <strong>ATL Others (Love)</strong>
+          <div style="padding:12px;border-radius:12px;border:1px solid #d7e3fb;background:#f0f6ff">
+            <span class="tag">ATL · Love</span>
             <div class="sliderRow"><label class="hint">Benchmark</label><input type="range" min="0" max="100" id="q_lov_bm" oninput="showVal('q_lov_bm_val',this.value)"><span id="q_lov_bm_val">50</span></div>
             <div class="sliderRow"><label class="hint">Self</label><input type="range" min="0" max="100" id="q_lov_sf" oninput="showVal('q_lov_sf_val',this.value)"><span id="q_lov_sf_val">50</span></div>
-            <button class="btn small" onclick="resetPair('q_lov_bm','q_lov_sf')">I don’t know</button>
           </div>
-          <div class="btl" style="padding:10px;border-radius:10px">
-            <strong>BTL Personal (Pride)</strong>
+          <div style="padding:12px;border-radius:12px;border:1px solid #e6deff;background:#f6f3ff">
+            <span class="tag">BTL · Pride</span>
             <div class="sliderRow"><label class="hint">Benchmark</label><input type="range" min="0" max="100" id="q_pri_bm" oninput="showVal('q_pri_bm_val',this.value)"><span id="q_pri_bm_val">50</span></div>
             <div class="sliderRow"><label class="hint">Self</label><input type="range" min="0" max="100" id="q_pri_sf" oninput="showVal('q_pri_sf_val',this.value)"><span id="q_pri_sf_val">50</span></div>
-            <button class="btn small" onclick="resetPair('q_pri_bm','q_pri_sf')">I don’t know</button>
           </div>
-          <div class="btl" style="padding:10px;border-radius:10px">
-            <strong>BTL Others (Fear)</strong>
+          <div style="padding:12px;border-radius:12px;border:1px solid #e6deff;background:#f6f3ff">
+            <span class="tag">BTL · Fear</span>
             <div class="sliderRow"><label class="hint">Benchmark</label><input type="range" min="0" max="100" id="q_fea_bm" oninput="showVal('q_fea_bm_val',this.value)"><span id="q_fea_bm_val">50</span></div>
             <div class="sliderRow"><label class="hint">Self</label><input type="range" min="0" max="100" id="q_fea_sf" oninput="showVal('q_fea_sf_val',this.value)"><span id="q_fea_sf_val">50</span></div>
-            <button class="btn small" onclick="resetPair('q_fea_bm','q_fea_sf')">I don’t know</button>
           </div>
         </div>
       </div>
 
-      <!-- Detailed Mode -->
       <div id="detailed" class="mode" style="display:none">
         <h3>16 Styles · Enter Benchmark & Self (0–100)</h3>
-        <div class="hint">Tip: You can fill only the styles you know; leave others blank.</div>
+        <div class="hint">Tip: fill only the styles you know; leave others blank.</div>
         <table>
           <thead><tr><th>Quadrant</th><th>Style</th><th>Benchmark</th><th>Self</th></tr></thead>
           <tbody id="styleRows"></tbody>
         </table>
-        <div class="row" style="margin-top:8px">
-          <button class="btn small" onclick="clearDetailed()">Clear all</button>
-          <span class="hint">Allowed range: 0–100. Leave empty if unsure.</span>
-        </div>
       </div>
     </div>
 
@@ -152,29 +147,47 @@
 
 <script>
 const styles = [
-  {q:"ATL Personal (Humility)", s:"Authentic", type:"ATL"},
-  {q:"ATL Personal (Humility)", s:"Transforming", type:"ATL"},
-  {q:"ATL Personal (Humility)", s:"Reliable", type:"ATL"},
-  {q:"ATL Personal (Humility)", s:"Achieving", type:"ATL"},
-  {q:"ATL Others (Love)", s:"Relating", type:"ATL"},
-  {q:"ATL Others (Love)", s:"Encouraging", type:"ATL"},
-  {q:"ATL Others (Love)", s:"Developing", type:"ATL"},
-  {q:"ATL Others (Love)", s:"Compassionate", type:"ATL"},
-  {q:"BTL Personal (Pride)", s:"Sarcastic Humour", type:"BTL"},
-  {q:"BTL Personal (Pride)", s:"Competitive", type:"BTL"},
-  {q:"BTL Personal (Pride)", s:"Controlling", type:"BTL"},
-  {q:"BTL Personal (Pride)", s:"Striving", type:"BTL"},
-  {q:"BTL Others (Fear)", s:"Approval", type:"BTL"},
-  {q:"BTL Others (Fear)", s:"Easily Offended", type:"BTL"},
-  {q:"BTL Others (Fear)", s:"Dependent", type:"BTL"},
-  {q:"BTL Others (Fear)", s:"Avoiding", type:"BTL"},
+  {q:"ATL · Humility", s:"Authentic", type:"ATL"},
+  {q:"ATL · Humility", s:"Transforming", type:"ATL"},
+  {q:"ATL · Humility", s:"Reliable", type:"ATL"},
+  {q:"ATL · Humility", s:"Achieving", type:"ATL"},
+  {q:"ATL · Love", s:"Relating", type:"ATL"},
+  {q:"ATL · Love", s:"Encouraging", type:"ATL"},
+  {q:"ATL · Love", s:"Developing", type:"ATL"},
+  {q:"ATL · Love", s:"Compassionate", type:"ATL"},
+  {q:"BTL · Pride", s:"Sarcastic Humour", type:"BTL"},
+  {q:"BTL · Pride", s:"Competitive", type:"BTL"},
+  {q:"BTL · Pride", s:"Controlling", type:"BTL"},
+  {q:"BTL · Pride", s:"Striving", type:"BTL"},
+  {q:"BTL · Fear", s:"Approval", type:"BTL"},
+  {q:"BTL · Fear", s:"Easily Offended", type:"BTL"},
+  {q:"BTL · Fear", s:"Dependent", type:"BTL"},
+  {q:"BTL · Fear", s:"Avoiding", type:"BTL"},
 ];
+
+const narrative = {
+  "Authentic": {meaning:"Direct, honest, values‑based communication.", helps:"Builds trust and clarity.", riskHigh:"Over‑sharing can unsettle others.", riskLow:"May be seen as guarded.", shift:"Name the fact + your intent.", experiment:"Open one meeting with a clear intent statement.", kpi:"trust, decision speed"},
+  "Transforming": {meaning:"Learns from feedback and adapts.", helps:"Faster improvement.", riskHigh:"Too many changes too fast.", riskLow:"Stagnation.", shift:"Pick one change for 2 weeks.", experiment:"Ask for micro‑feedback after next meeting.", kpi:"learning velocity"},
+  "Reliable": {meaning:"Consistent follow‑through.", helps:"Predictability; lowers friction.", riskHigh:"Rigidity under change.", riskLow:"Missed deadlines.", shift:"Lock follow‑ups; signal risk early.", experiment:"Send proactive status before due.", kpi:"on‑time delivery"},
+  "Achieving": {meaning:"Proactive, initiates progress.", helps:"Momentum; ownership.", riskHigh:"Overextension.", riskLow:"Passivity.", shift:"One high‑leverage action weekly.", experiment:"Book one proactive meeting in 7 days.", kpi:"owned pipeline/actions"},
+  "Relating": {meaning:"Builds meaningful relationships.", helps:"Access, smoother work.", riskHigh:"Avoids tough talk.", riskLow:"Transactional tone.", shift:"Care + clarity.", experiment:"Ask one value‑focused question per meeting.", kpi:"relationship strength"},
+  "Encouraging": {meaning:"Recognises progress; energises.", helps:"Motivation.", riskHigh:"Praise without direction.", riskLow:"Critical tone.", shift:"Pair praise with next step.", experiment:"Give precise recognition + ask next step.", kpi:"engagement"},
+  "Developing": {meaning:"Coaches and grows others.", helps:"Capability scaling.", riskHigh:"Over‑helping.", riskLow:"Under‑investment in people.", shift:"Ask before advising; co‑create.", experiment:"Run a 10‑min coaching check‑in.", kpi:"capability growth"},
+  "Compassionate": {meaning:"Empathy; sees context.", helps:"Safety; insight.", riskHigh:"Avoids challenge.", riskLow:"Colder climate.", shift:"Empathy + boundary.", experiment:"Reflect feeling then state ask.", kpi:"retention, conflict quality"},
+  "Sarcastic Humour": {meaning:"Cutting humour to deflect/criticise.", helps:"Rarely productive.", riskHigh:"Erodes trust.", riskLow:"Neutral.", shift:"Use plain, respectful wording.", experiment:"Replace one joke‑with‑a‑sting with a fact.", kpi:"meeting tone"},
+  "Competitive": {meaning:"Treats work as a contest.", helps:"Drive.", riskHigh:"Short‑term wins over long‑term.", riskLow:"Low ambition signal.", shift:"Define sustainable win.", experiment:"Ask counterpart’s success criteria first.", kpi:"win‑win outcomes"},
+  "Controlling": {meaning:"Low trust in others’ execution.", helps:"Short‑term quality.", riskHigh:"Bottlenecks, low ownership.", riskLow:"Risk of drift if too low.", shift:"Outcome clarity + autonomy.", experiment:"Delegate one decision with boundary.", kpi:"ownership, cycle time"},
+  "Striving": {meaning:"Perfection under fear.", helps:"High bar when healthy.", riskHigh:"Delay, burnout.", riskLow:"Too rough‑cut.", shift:"Define ‘good enough’ + date.", experiment:"Ship v1 by a date, then iterate.", kpi:"time‑to‑value"},
+  "Approval": {meaning:"Seeks to be liked; avoids ‘no’.", helps:"Warmth.", riskHigh:"Boundary/margin loss.", riskLow:"Blunt if too low.", shift:"Respectful boundary.", experiment:"Prepare one firm ‘no’ phrase.", kpi:"margin, clarity"},
+  "Easily Offended": {meaning:"Takes things personally.", helps:"Tone sensitivity.", riskHigh:"Ruminates; conflict drags.", riskLow:"Risk of insensitivity.", shift:"Assume positive intent; clarify.", experiment:"Ask ‘What did you intend?’ once.", kpi:"conflict recovery time"},
+  "Dependent": {meaning:"Seeks permission before acting.", helps:"Avoids missteps.", riskHigh:"Slow; low ownership.", riskLow:"Misalignment risk.", shift:"Make the smallest ‘own call’.", experiment:"Decide one item within mandate today.", kpi:"speed, autonomy"},
+  "Avoiding": {meaning:"Dodges hard topics.", helps:"Short‑term calm.", riskHigh:"Issues linger; trust drops.", riskLow:"Bluntness risk.", shift:"Name the issue early.", experiment:"Open one tough topic with a neutral fact.", kpi:"resolution speed"}
+};
 
 const detailedBody = document.getElementById('styleRows');
 styles.forEach((it,i)=>{
   const row = document.createElement('tr');
-  row.innerHTML = `<td>${it.q}</td>
-    <td>${it.s}</td>
+  row.innerHTML = `<td>${it.q}</td><td>${it.s}</td>
     <td><input type="number" id="bm_${i}" min="0" max="100" placeholder=""></td>
     <td><input type="number" id="sf_${i}" min="0" max="100" placeholder=""></td>`;
   detailedBody.appendChild(row);
@@ -188,22 +201,16 @@ function setMode(m){
   toast(`Mode: ${m}`);
 }
 
-function showVal(id,val){ document.getElementById(id).textContent = val; }
-function resetPair(a,b){
-  document.getElementById(a).value=50; document.getElementById(b).value=50;
-  showVal(a+'_val','50'); showVal(b+'_val','50');
-}
+function showVal(id,val){ const el=document.getElementById(id); if(el) el.textContent = val; }
 
 function getQuickData(){
   const get = id => +document.getElementById(id).value || 0;
-  return {
-    quadrants:{
+  return { quadrants:{
       hum:{bm:get('q_hum_bm'), sf:get('q_hum_sf')},
       lov:{bm:get('q_lov_bm'), sf:get('q_lov_sf')},
       pri:{bm:get('q_pri_bm'), sf:get('q_pri_sf')},
       fea:{bm:get('q_fea_bm'), sf:get('q_fea_sf')},
-    }
-  };
+  }};
 }
 
 function getDetailedData(){
@@ -220,176 +227,83 @@ function interpret(){
   let out = [];
   if(modeQuick){
     const q = getQuickData().quadrants;
-    out.push("## Snapshot (Quadrants)");
-    const items = [
-      ["Humility (ATL Personal)", q.hum],
-      ["Love (ATL Others)", q.lov],
-      ["Pride (BTL Personal)", q.pri],
-      ["Fear (BTL Others)", q.fea]
-    ];
-    items.forEach(([name,val])=>{
+    out.push("# Snapshot (Quadrants)");
+    [["Humility (ATL)",q.hum],["Love (ATL)",q.lov],["Pride (BTL)",q.pri],["Fear (BTL)",q.fea]].forEach(([name,val])=>{
       const delta = val.sf - val.bm;
       out.push(`• ${name}: Benchmark ${val.bm} → Self ${val.sf} (Δ ${delta>=0?'+':''}${delta})`);
     });
-    out.push("");
-    out.push(...interpretQuadrants(q));
+    out.push(""); out.push(...interpretQuadrants(q));
   } else {
     const d = getDetailedData().styles;
     const filled = d.filter(x=>x.bm!==null || x.sf!==null);
     if(filled.length===0){ toast("Fill at least one style"); return; }
-    out.push("## Snapshot (Styles)");
+    out.push("# Snapshot (Styles)");
     filled.forEach(x=>{
       const bm = x.bm ?? "?"; const sf = x.sf ?? "?";
       const delta = (x.bm!=null && x.sf!=null) ? (sf-bm) : null;
       out.push(`• ${x.q} · ${x.s}: Benchmark ${bm} → Self ${sf}${delta===null?'':' (Δ '+(delta>=0?'+':'')+delta+')'}`);
     });
-    out.push("");
-    out.push(...interpretStyles(filled));
+    out.push(""); out.push(...interpretStylesHuman(filled));
   }
   document.getElementById('output').textContent = out.join('\n');
 }
 
 function interpretQuadrants(q){
-  let lines = ["### Interpretation & Questions"];
-  // Heuristics
-  const humD = q.hum.sf - q.hum.bm;
-  const lovD = q.lov.sf - q.lov.bm;
-  const priD = q.pri.sf - q.pri.bm;
-  const feaD = q.fea.sf - q.fea.bm;
-
-  // Flags
-  if (priD>5 || q.pri.sf>60) {
-    lines.push("• Pride (BTL Personal) rising — risk of Controlling/Striving: micromanagement, perfectionism under KPI pressure.");
-    lines.push("  Question: “What would become possible if you trusted your counterpart with one step of the process?”");
-    lines.push("  Move: Shift to **Developing / Achieving** — define ‘good enough by Friday’ and delegate one micro‑decision.");
-  }
-  if (feaD>5 || q.fea.sf>60) {
-    lines.push("• Fear (BTL Others) rising — risk of Approval/Avoiding: soft ‘yes’, boundary issues, slow tough talks.");
-    lines.push("  Question: “Where did a soft ‘yes’ reduce value? What boundary will you state early next meeting?”");
-    lines.push("  Move: Shift to **Authentic / Relating** — clear intent, respectful ‘no’, co‑create alternatives.");
-  }
-  if (humD<-5 || q.hum.sf<40) {
-    lines.push("• Humility (ATL Personal) lower in Self — openness/ownership drops under pressure.");
-    lines.push("  Question: “What gets in the way of candour when stakes are high?”");
-    lines.push("  Move: Practice **Authentic/Reliable** — name the fact, admit one risk, lock follow‑ups.");
-  }
-  if (lovD<-5 || q.lov.sf<40) {
-    lines.push("• Love (ATL Others) lower in Self — relationship focus diluted by short‑term pressure.");
-    lines.push("  Question: “Which buyer needs more ‘time in the account’ this month?”");
-    lines.push("  Move: Practice **Relating/Developing** — one value‑adding touch, one coaching moment with partner.");
-  }
-
-  if (lines.length===1){
-    lines.push("• Balanced snapshot. Pick one ATL to amplify in a real account next 7 days, and one BTL to reduce.");
-  }
-
-  // Action plan
-  lines.push("");
-  lines.push("### 7‑Day Micro Action Plan");
-  lines.push("• Target behaviour: ______  →  ______ (BTL → ATL)");
-  lines.push("• Account / meeting: ______  • Next move: ______  • Success signal: ______");
+  let lines = ["## Insights & What to do next"];
+  const humD=q.hum.sf-q.hum.bm, lovD=q.lov.sf-q.lov.bm, priD=q.pri.sf-q.pri.bm, feaD=q.fea.sf-q.fea.bm;
+  if (priD>5 || q.pri.sf>60){lines.push("• Pride rising → likely Controlling/Striving. Cost: lower ownership, slower cycle time.");lines.push("  Try this week: delegate one decision with a clear boundary and a check‑point date.");}
+  if (feaD>5 || q.fea.sf>60){lines.push("• Fear rising → likely Approval/Avoiding. Cost: fuzzy boundaries; unresolved issues.");lines.push("  Try this week: prepare a respectful ‘no’; open one tough topic with a neutral fact.");}
+  if (humD<-5 || q.hum.sf<40){lines.push("• Humility lower in Self → candour/ownership drops under pressure.");lines.push("  Try this week: start one meeting by stating your intent and one risk you see.");}
+  if (lovD<-5 || q.lov.sf<40){lines.push("• Love lower in Self → relationship focus compressed.");lines.push("  Try this week: one value‑adding touch and one coaching moment for a colleague/partner.");}
+  if (lines.length===1){lines.push("• Balanced picture. Choose one ATL to amplify and one BTL to reduce for the next 7 days.");}
+  lines.push(""); lines.push("## 7‑Day Micro Experiment"); lines.push("• Behaviour: ______  →  ______  • Context: ______  • Success signal: ______");
   return lines;
 }
 
-const qMap = {
-  "Sarcastic Humour": {to:"Authentic", ask:"When humour lands badly, what’s the cost? How would plain language sound instead?"},
-  "Competitive": {to:"Achieving", ask:"Where did ‘winning the moment’ cost long‑term access? What would a sustainable win look like?"},
-  "Controlling": {to:"Developing", ask:"What are you afraid will happen if you let go? Which micro‑decision can you safely delegate?"},
-  "Striving": {to:"Reliable/Achieving", ask:"Where did ‘perfect’ delay value? What is ‘good enough by Friday’ for this account?"},
-  "Approval": {to:"Authentic/Relating", ask:"Where did saying ‘yes’ shrink margin? What boundary will you state next time?"},
-  "Easily Offended": {to:"Compassionate", ask:"Which remark stuck with you? If you reframe intent, what changes?"},
-  "Dependent": {to:"Achieving", ask:"What decision fits your mandate today? What’s the smallest ‘own call’ you’ll make this week?"},
-  "Avoiding": {to:"Authentic/Developing", ask:"Which tough talk are you postponing? What’s the first sentence you’ll use to open it?"},
-};
-
-function interpretStyles(rows){
-  let lines = ["### Interpretation & Questions"];
-  // Identify top signals
-  const atls = rows.filter(r=>r.type==='ATL' && r.sf!=null).sort((a,b)=>b.sf-a.sf).slice(0,2);
-  const btls = rows.filter(r=>r.type==='BTL' && r.sf!=null).sort((a,b)=>b.sf-a.sf).slice(0,2);
-  if(atls.length){
-    lines.push("• Top ATL strengths:");
-    atls.forEach(x=>lines.push(`   – ${x.s} (${x.sf}) → Where does this win with accounts? How to repeat next week?`));
-  }
-  if(btls.length){
-    lines.push("• Top BTL risks:");
-    btls.forEach(x=>{
-      const tip = qMap[x.s];
-      if(tip){
-        lines.push(`   – ${x.s} (${x.sf}) → Shift to **${tip.to}**. Question: ${tip.ask}`);
-      } else {
-        lines.push(`   – ${x.s} (${x.sf}) → Identify trigger; choose ATL counterpart.`);
-      }
-    });
-  }
-  // Gap-based prompts
+function interpretStylesHuman(rows){
+  let lines = ["## Interpretation (human‑readable)"];
+  const bySF = rows.filter(r=>r.sf!=null).sort((a,b)=>b.sf-a.sf);
+  const topATL = bySF.filter(r=>r.type==='ATL').slice(0,2);
+  const topBTL = bySF.filter(r=>r.type==='BTL').slice(0,2);
+  if(topATL.length){lines.push("• Top ATL strengths to scale:"); topATL.forEach(x=>lines.push(`  – ${x.s} (${x.sf}) · ${narrative[x.s].meaning} • Why it helps: ${narrative[x.s].helps}`));}
+  if(topBTL.length){lines.push("• Top BTL risks to watch:"); topBTL.forEach(x=>lines.push(`  – ${x.s} (${x.sf}) · ${narrative[x.s].meaning} • Risk: ${narrative[x.s].riskHigh}`));}
   const gapsUp = rows.filter(r=>r.bm!=null && r.sf!=null && (r.sf - r.bm) >= 10);
   const gapsDown = rows.filter(r=>r.bm!=null && r.sf!=null && (r.sf - r.bm) <= -10);
-  if(gapsUp.length){
-    lines.push("• Self much higher than Benchmark:");
-    gapsUp.forEach(x=>lines.push(`   – ${x.s} (Δ +${x.sf - x.bm}) → How do others experience this in real meetings?`));
-  }
-  if(gapsDown.length){
-    lines.push("• Self lower than Benchmark (intent not lived yet):");
-    gapsDown.forEach(x=>lines.push(`   – ${x.s} (Δ ${x.sf - x.bm}) → What gets in the way? Where will you test it next?`));
-  }
-  // Action plan
-  lines.push("");
-  lines.push("### 7‑Day Micro Action Plan");
-  lines.push("• Target behaviour: ______  →  ______ (BTL → ATL)");
-  lines.push("• Account / meeting: ______  • Next move: ______  • Success signal: ______");
-  return lines;
-}
-
-function clearDetailed(){
-  styles.forEach((_,i)=>{
-    document.getElementById('bm_'+i).value='';
-    document.getElementById('sf_'+i).value='';
+  if(gapsUp.length){lines.push("• Self ≫ Benchmark (possible overestimation or fast growth):"); gapsUp.forEach(x=>lines.push(`  – ${x.s} Δ +${x.sf - x.bm}: How do others experience this in real interactions?`));}
+  if(gapsDown.length){lines.push("• Self ≪ Benchmark (intent not yet lived):"); gapsDown.forEach(x=>lines.push(`  – ${x.s} Δ ${x.sf - x.bm}: What gets in the way? Where will you test it next?`));}
+  lines.push(""); lines.push("## Personalized recommendations");
+  const notable = [...topBTL, ...topATL, ...gapsDown].slice(0,6);
+  if(notable.length===0){ lines.push("• Add at least one style to get tailored guidance."); return lines; }
+  notable.forEach(x=>{
+    const n=narrative[x.s]; if(!n) return;
+    const delta=(x.bm!=null && x.sf!=null)?(x.sf-x.bm):null;
+    lines.push(`### ${x.s}${delta!==null?` (Δ ${delta>=0?'+':''}${delta})`:''}`);
+    lines.push(`• What it means: ${n.meaning}`);
+    lines.push(`• ${x.type==='ATL'?'Why it helps':'Risk'}: ${x.type==='ATL'?n.helps:n.riskHigh}`);
+    lines.push(`• Try this week: ${n.experiment}`);
+    lines.push(`• Useful phrase: ${n.shift}`);
+    lines.push(`• KPI impact: ${n.kpi}`);
+    lines.push("");
   });
+  lines.push("## 7‑Day Micro Plan"); lines.push("• Target behaviour: ______  →  ______  • Context: ______  • Success signal: ______");
+  return lines;
 }
 
 function exportJSON(){
   const data = collectAll();
   const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href=url; a.download='heartstyles_self_debrief_v2.json'; a.click();
+  const a = document.createElement('a'); a.href=url; a.download='heartstyles_self_debrief_v3.json'; a.click();
   setTimeout(()=>URL.revokeObjectURL(url), 500);
 }
-
-async function copyJSON(){
-  try{
-    await navigator.clipboard.writeText(JSON.stringify(collectAll(),null,2));
-    toast('Copied JSON ✔');
-  }catch(e){ toast('Copy failed'); }
-}
-
+async function copyJSON(){try{await navigator.clipboard.writeText(JSON.stringify(collectAll(),null,2));toast('Copied JSON ✔');}catch(e){toast('Copy failed');}}
 function collectAll(){
-  const quickOn = document.getElementById('quick').style.display!=='none';
-  return {
-    meta:{ts:new Date().toISOString()},
-    person:{
-      name:val('name'), email:val('email'), role:val('role'), market:val('market')
-    },
-    mode: quickOn?'quick':'detailed',
-    quick: quickOn? getQuickData() : null,
-    detailed: !quickOn? getDetailedData() : null,
-    output: document.getElementById('output').textContent
-  };
+  const quickOn=document.getElementById('quick').style.display!=='none';
+  return {meta:{ts:new Date().toISOString()},person:{name:val('name'),email:val('email'),role:val('role'),market:val('market')},mode:quickOn?'quick':'detailed',quick:quickOn?getQuickData():null,detailed:!quickOn?getDetailedData():null,output:document.getElementById('output').textContent};
 }
-
 function val(id){const el=document.getElementById(id);return el?el.value.trim():'';}
-
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),1800);
-}
-
-// Initialize slider values display
-['q_hum_bm','q_hum_sf','q_lov_bm','q_lov_sf','q_pri_bm','q_pri_sf','q_fea_bm','q_fea_sf'].forEach(id=>{
-  const el=document.getElementById(id); if(el){ showVal(id+'_val', el.value||'50'); }
-});
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+['q_hum_bm','q_hum_sf','q_lov_bm','q_lov_sf','q_pri_bm','q_pri_sf','q_fea_bm','q_fea_sf'].forEach(id=>{const el=document.getElementById(id); if(el){ const display=document.createElement('span'); display.id=id+'_val'; display.style.marginLeft='6px'; el.parentElement.appendChild(display); display.textContent=el.value||'50'; el.addEventListener('input',()=>display.textContent=el.value); }});
 </script>
 </body>
 </html>
