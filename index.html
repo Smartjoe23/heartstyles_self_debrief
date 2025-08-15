@@ -3,16 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Heartstyles Self‑Debrief v4.2 — Sandoz style</title>
+<title>Heartstyles Self‑Debrief v4.3 — Sandoz style</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --dark:#001C4A; --sandoz:#1C59B5; --med:#5DA6FF; --light:#A8D5FF;
-    --ink:#0B1020; --muted:#5b6b8a; --line:#e6eefc; --bg:#F7FAFF; --card:#ffffff;
-    --ok:#e7f8ef; --mid:#fff8e6; --risk:#ffefef;
-  }
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-    font-family:"Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,system-ui,sans-serif;line-height:1.5}
+  :root{--dark:#001C4A;--sandoz:#1C59B5;--med:#5DA6FF;--light:#A8D5FF;--ink:#0B1020;--muted:#5b6b8a;--line:#e6eefc;--bg:#F7FAFF;--card:#ffffff;--ok:#e7f8ef;--mid:#fff8e6;--risk:#ffefef}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,system-ui,sans-serif;line-height:1.5}
   header{position:sticky;top:0;background:linear-gradient(90deg,var(--dark),var(--sandoz));color:#fff;z-index:10}
   .wrap{max-width:1100px;margin:0 auto;padding:14px}
   h1{font-size:22px;margin:0 0 6px 0;font-weight:700;letter-spacing:.2px}
@@ -48,12 +43,12 @@
 <body>
   <header>
     <div class="wrap">
-      <h1>Heartstyles Self‑Debrief v4.2 <span style="font-weight:400;font-size:12px;opacity:.9">Universal · Sandoz style</span></h1>
+      <h1>Heartstyles Self‑Debrief v4.3 <span style="font-weight:400;font-size:12px;opacity:.9">Universal · Sandoz style</span></h1>
       <div class="brandbar"></div>
       <div class="chips">
         <span class="chip">Detailed: 16 styles (main)</span>
         <span class="chip">Auto: Quadrants summary (extra)</span>
-        <span class="chip">Export JSON · Print PDF</span>
+        <span class="chip">Print / Save PDF</span>
       </div>
     </div>
   </header>
@@ -67,7 +62,7 @@
         <div class="col"><label>Role (optional)</label><input id="role" type="text" placeholder="e.g., Sales / KAM, Manager / FLM, ..."></div>
         <div class="col"><label>Market / Team (optional)</label><input id="market" type="text" placeholder="e.g., Slovenia"></div>
       </div>
-      <small class="footer">Data stays in your browser unless you export or print.</small>
+      <small class="footer">Data stays in your browser unless you print.</small>
     </div>
 
     <div class="card">
@@ -76,7 +71,7 @@
         <span class="badge zone-ok">85–100 = Strength</span>
         <span class="badge zone-mid">60–84 = Needs attention</span>
         <span class="badge zone-risk">0–59 = Risk area</span>
-        <span class="footer">You can leave Benchmark blank if you don't have it.</span>
+        <span class="footer">Benchmark is optional.</span>
       </div>
       <div id="inputs"></div>
       <div class="row" style="margin-top:10px">
@@ -99,7 +94,6 @@
     <div class="card">
       <h2>Save / Share</h2>
       <div class="row" style="gap:8px">
-        <button class="btn" onclick="exportJSON()">Export JSON</button>
         <button class="btn" onclick="window.print()">Print / Save PDF</button>
       </div>
     </div>
@@ -257,21 +251,6 @@ function clearAll(){
   document.getElementById('stylesOut').textContent = "Cleared. Fill scores and run again.";
   document.getElementById('quads').innerHTML = "";
 }
-
-function exportJSON(){
-  const data = {
-    ts:new Date().toISOString(),
-    person:{name:val('name'),email:val('email'),role:val('role'),market:val('market')},
-    styles: STYLES.map((it,i)=>({q:it.q, s:it.s, self:document.getElementById('sf_'+i).value||null, benchmark:document.getElementById('bm_'+i).value||null})),
-    stylesOutput: document.getElementById('stylesOut').innerText
-  };
-  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href=url; a.download='heartstyles_self_debrief_v4_2.json'; a.click();
-  setTimeout(()=>URL.revokeObjectURL(url), 500);
-}
-
-function val(id){const el=document.getElementById(id);return el?el.value.trim():"";}
 
 makeInputs();
 </script>
